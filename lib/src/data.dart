@@ -180,7 +180,7 @@ class JudgeData<T> {
 extension StringUtil on String? {
   bool get e => isEmpty(this);
 
-  bool get en => isNotEmpty(this);
+  bool get ne => isNotEmpty(this);
 
   bool get b => BoolUtil.parse(this);
 
@@ -316,7 +316,7 @@ extension BoolUtil on bool? {
 extension ListUtil on List? {
   bool get e => isEmpty(this);
 
-  bool get en => isNotEmpty(this);
+  bool get ne => isNotEmpty(this);
 
   static List<String> parseS(dynamic value) => parse<String>(value);
 
@@ -419,7 +419,7 @@ extension ListUtil on List? {
 extension MapUtil on Map? {
   bool get e => isEmpty(this);
 
-  bool get en => isNotEmpty(this);
+  bool get ne => isNotEmpty(this);
 
   static bool isEmpty(Map? map) {
     return map == null || map.isEmpty;
