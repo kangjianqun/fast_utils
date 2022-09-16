@@ -132,7 +132,9 @@ valueByType<T>(
     }
     return null;
   } else {
-    if (value.runtimeType == type) return value;
+    if (value.runtimeType == type && (type != Map || type == List<T>)) {
+      return value;
+    }
 
 //  debugPrint("$stack : ${value.runtimeType} is not $type type");
     if (type == String) {
