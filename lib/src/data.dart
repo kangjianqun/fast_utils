@@ -105,14 +105,13 @@ bool boolOf(data) => valueByType(data, bool);
 
 /// 值转换
 /// [dValue] 默认值
-valueByType<T>(
-  value,
-  Type type, {
-  String stack = "",
-  ItemBuild<T>? itemBuild,
-  bool nullable = false,
-  T? dValue,
-}) {
+valueByType<T>(value,
+    Type type, {
+      String stack = "",
+      ItemBuild<T>? itemBuild,
+      bool nullable = false,
+      T? dValue,
+    }) {
   if (value == null) {
 //    debugPrint("valueByType  $stack : value is null");
     if (nullable) return null;
@@ -132,7 +131,8 @@ valueByType<T>(
     }
     return null;
   } else {
-    if (value.runtimeType == type && (type != Map || type == List<T>)) {
+    Type vT = value.runtimeType;
+    if (vT == type && type != Map && (type != List || vT == List<T>)) {
       return value;
     }
 
@@ -214,7 +214,7 @@ extension StringUtil on String? {
   static bool isListEmpty(List<JudgeData<String>> lists) {
     var emptyData = lists.firstWhere(
       // (item) => isEmpty(item.value, toast: item.toast),
-      (item) => isEmpty(item.value),
+          (item) => isEmpty(item.value),
       orElse: () => JudgeData<String>(null),
     );
     return emptyData.value != null;
